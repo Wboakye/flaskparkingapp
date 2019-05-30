@@ -27,16 +27,14 @@ class Person(db.Model):
 
 class Address(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    person_id = db.Column(db.String(80), db.ForeignKey('Person.id'), unique=False, nullable=False)
     address = db.Column(db.String(80), unique=False, nullable=False)
 
 
 
     def __repr__(self):
-        return '<Cart %r>' % self.id
+        return '<Address %r>' % self.id
 
-    def serialize(self):
+    def serialize(self, id, person_id, address):
         return {
             "id": self.id,
-            "person_id": self.person_id,
             "address": self.address }
